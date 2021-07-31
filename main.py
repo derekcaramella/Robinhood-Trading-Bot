@@ -55,9 +55,9 @@ for ticker in retrieved_tickers:
     correlation_list.append((ticker, np.median(ridge_y), reg.score(ridge_x, ridge_y), float(reg.coef_)))
 # After all ticker data has been obtained convert correlation list to a dataframe
 correlation_df = pd.DataFrame(correlation_list,
-                              columns=['Ticker', 'Average Growth', 'R Squared', 'Growth Percentage Coefficient'])
+                              columns=['Ticker', 'Median Growth', 'R Squared', 'Growth Percentage Coefficient'])
 
-correlation_df.sort_values(by=['R Squared', 'Average Growth', 'Growth Percentage Coefficient'])
+correlation_df.sort_values(by=['Median Growth', 'R Squared', 'Growth Percentage Coefficient'])
 print(correlation_df.head(20))
 
 # stock_data_2 = query_yahoo(ticker_list[100:200])
