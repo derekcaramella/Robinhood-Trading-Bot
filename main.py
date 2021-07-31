@@ -1,4 +1,4 @@
-# Import necessary modules
+# Import necessary moduless
 import robin_stocks.robinhood as r
 import requests
 import pandas as pd
