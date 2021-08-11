@@ -62,7 +62,6 @@ def build_ridge_analysis_dataframe(percent_change_dataframe):
                                            'R Squared', 'Growth Percentage Coefficient'])
     return correlation_df
 
-
 def build_complete_stock_data():
     """From stock symbol acquisition to ridge modeling, this will sort return a complete dataframe of the top 300'
     S&P companies"""
