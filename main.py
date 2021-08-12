@@ -3,7 +3,6 @@ import robin_stocks.robinhood as r
 import requests
 import pandas as pd
 import yfinance as yf
-import openpyxl
 from sklearn import linear_model
 import numpy as np
 
@@ -80,6 +79,15 @@ def build_complete_stock_data():
     # Sort for purchase analysis
     total_stock_df.sort_values(by=['Reputation Weight', 'R Squared', 'Average Growth', 'Growth Percentage Coefficient'])
     return total_stock_df  # Return data frame
+
+
+def recommend_top_stock(complete_stock_performance_dataframe):
+    """Function to recommend the top performance stock: the top reputation with this highest fitting model with the best
+    growth. We will need the build_complete_stock_data function to input our parameter
+    :param complete_stock_performance_dataframe: dataframe
+    """
+    # Use  sorted complete stock performance dataframe, return top ticker from sorted, get the values, index 0 for value
+    return complete_stock_performance_dataframe['Ticker'].head(1).values[0]
 
 # login = r.login(settings.username, settings.password)
 # profile_dictionary = r.build_user_profile()
