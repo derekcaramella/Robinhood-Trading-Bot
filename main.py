@@ -76,7 +76,7 @@ def build_complete_stock_data():
     total_stock_df = calculate_percent_change_df(total_stock_df)  # Calculate the percent change
     total_stock_df = build_ridge_analysis_dataframe(total_stock_df)  # Obtain ridge regression analysis
     # Sort for purchase analysis
-    total_stock_df.sort_values(by=['Reputation Weight', 'R Squared', 'Average Growth', 'Growth Percentage Coefficient'])
+    total_stock_df.sort_values(by=['Reputation Weight', 'R Squared', 'Average Growth', 'Growth Percentage Coefficient'], ascending=False)
     return total_stock_df  # Return data frame
 
 
