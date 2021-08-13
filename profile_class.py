@@ -297,7 +297,7 @@ class Profile:
         # If we have a completed trade that is not sold
         if (not self.get_pending_sells()) and (pending_trade_index is not None):
             current_time = pd.Timestamp.now()  # Obtain the current timestamp with pandas method
-            self.trading_history.at[self.trading_history, 'Sell Order Time'] = current_time  # Update the record
+            self.trading_history.at[pending_trade_index, 'Sell Order Time'] = current_time  # Update the record
             self.set_pending_sells(True)  # Set the attribute to true
             self.dump_profile_to_pickle()  # Save changes to profile
             return True  # Return true for success
@@ -355,6 +355,7 @@ class Profile:
             purchase_stock_level = self.get_current_stock_purchase_price()  # Get initial purchase price of stock
             current_stock_price = get_stock_price(self.get_current_stock_holding())  # Get current stock price of stock
             percentage_change = ((current_stock_price - purchase_stock_level)/purchase_stock_level) * 100  # pct change
+            self.set_current_percentage_change(percentage_change)
             self.dump_profile_to_pickle()  # Save changes to profile
         return percentage_change
 
