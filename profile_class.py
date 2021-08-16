@@ -14,9 +14,9 @@ class Profile:
 
     def __init__(self, first_name):
         self.first_name = first_name
-        self.cash = None
-        self.invested_capital = None
-        self.capital_gains = None
+        self.cash = 0
+        self.invested_capital = 0
+        self.capital_gains = 0
         self.pending_purchase = False
         self.pending_sells = False
         self.current_stock_holding = None
@@ -314,7 +314,8 @@ class Profile:
 
         # If there is an active trade, there will be only one, we want to sell that stock
         pending_trade_index = self.trading_history.index[self.trading_history['Sell Completed Time'].isnull()].tolist()
-        if self.get_pending_purchase() and pending_trade_index is not None:
+        print(pending_trade_index)
+        if self.get_pending_sells() and pending_trade_index != []:
             # Obtain the stock ticker at that row index. Values will return a list, so we use 0 index for the value
             pending_stock = self.trading_history.iloc[pending_trade_index]['Stock Ticker'].values[0]
             # Obtain the invested capital at that row index. Values will return a list, so we use 0 index for the value
