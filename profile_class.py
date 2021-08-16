@@ -33,6 +33,29 @@ class Profile:
                                              'Sell Completed Time': [],
                                              'Profit': []})
         self.dump_profile_to_pickle()  # Save changes to profile
+        
+    def __str__(self):
+        cash = self.get_cash()
+        invested_capital = self.get_invested_capital()
+        capital_gains = self.get_capital_gains()
+        pending_purchase = self.get_pending_purchase()
+        pending_sells = self.get_pending_sells()
+        current_stock_holding = self.get_current_stock_holding()
+        current_stock_purchase_price = self.get_current_stock_purchase_price()
+        current_percentage_change = self.get_current_percentage_change()
+        current_number_of_shares = self.get_current_number_of_shares()
+        
+        tuple_print_list = [('Cash: $', round(cash, 2)), ('Invested Capital: $', round(invested_capital, 2)), ('Pending Purchase: ', pending_purchase),
+                            ('Pending Sell: ', pending_sells), ('Current Stock Holding: ', current_stock_holding),
+                            ('Current Stock Purchase Price: $', round(current_stock_purchase_price, 2)), ('Current Percentage Change: ', round(current_percentage_change, 2)),
+                            ('Current Number of Shares: ', round(current_number_of_shares, 2))]
+        output_string = ''
+        
+        for instance in tuple_print_list:
+            instance_string = instance[0] + str(instance[1]) + '\n'
+            output_string += instance_string
+        
+        return output_string
 
     def set_cash(self, new_balance):
         """
